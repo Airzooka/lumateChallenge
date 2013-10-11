@@ -29,7 +29,7 @@ DATABASES = {
 # Paths and hosts
 LC_ROOT = '/home/ubuntu/lumatechallenge/'
 LC_URL = 'http://ec2-54-200-136-220.us-west-2.compute.amazonaws.com/'
-MEDIA_ROOT = LC_PATH + 'media/'
+MEDIA_ROOT = LC_ROOT + 'media/'
 MEDIA_URL = LC_URL + 'media/'
 ALLOWED_HOSTS = [LC_URL]
 
