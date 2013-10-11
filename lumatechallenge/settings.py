@@ -21,7 +21,7 @@ DATABASES = {
         'NAME': 'lumatechallenge',
         'USER': 'psql_runner',
         'PASSWORD': 'asdf1243',
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
