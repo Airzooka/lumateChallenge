@@ -1,0 +1,9 @@
+{% if EntriesList %}
+    <table>
+    {% for entry in EntriesList %}
+        <tr><td>{{ entry.comment }}</td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <div>Nobody has used the guest book!</div>
+{% endif %}
