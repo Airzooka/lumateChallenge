@@ -12,7 +12,7 @@ def write(request):
     Entry.objects.create(
         nameFirst=request.POST['nameFirst']
         nameLast=request.post['nameLast']
-    )
+        )
     context = {
         ''
         }
