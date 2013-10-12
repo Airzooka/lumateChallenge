@@ -6,7 +6,7 @@ class Entry(models.Model):
     """A digital signature in the guest book."""
     datetime = models.DateTimeField(False, True)
     ip = models.IPAddressField()
-    nameFirst = models.CharField(
+    namefirst = models.CharField(
         max_length=32,
         validators=[
             validators.RegexValidator(
@@ -16,7 +16,7 @@ class Entry(models.Model):
                 )
             ]
         )
-    nameLast = models.CharField(
+    namelast = models.CharField(
         max_length=32,
         validators=[
             validators.RegexValidator(
