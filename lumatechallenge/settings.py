@@ -31,6 +31,7 @@ LC_ROOT = '/home/ubuntu/lumatechallenge/'
 LC_URL = 'http://ec2-54-200-136-220.us-west-2.compute.amazonaws.com/'
 MEDIA_ROOT = LC_ROOT + 'media/'
 MEDIA_URL = LC_URL + 'media/'
+ROOT_URLCONF = 'lumatechallenge.urls'
 ALLOWED_HOSTS = [LC_URL]
 
 # Time, date, and other locale
@@ -44,7 +45,7 @@ USE_I18N = True
 STATIC_ROOT = LC_ROOT + 'static/'
 STATIC_URL = LC_URL + 'static/'
 STATICFILES_DIRS = (
-    '/home/_static/'
+    '/home/lumatechallenge/static/'
     )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -57,20 +58,22 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
     )
 TEMPLATE_DIRS = (
-    '/home/_static/html/'
+    '/home/lumatechallenge/templates/'
     )
-
-# Django Misc
-ROOT_URLCONF = 'lumatechallenge.urls'
-WSGI_APPLICATION = 'lumatechallenge.wsgi.application'
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+    
+# Apps and Middleware
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     )
-    
-# Misc
-SECRET_KEY = '%9%cm@2qms!4)&h6jwbah8$fcel2706jf6jbw01+*&23u^+pus'
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
+    'guestbook'
     )
+
+# Django Misc
+WSGI_APPLICATION = 'lumatechallenge.wsgi.application'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+# Misc    
+SECRET_KEY = '%9%cm@2qms!4)&h6jwbah8$fcel2706jf6jbw01+*&23u^+pus'
