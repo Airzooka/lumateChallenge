@@ -1,6 +1,7 @@
-{% if EntriesList %}
+{% extends container_guestbook %}
+{% if entries_list %}
     <table>
-    {% for entry in EntriesList %}
+    {% for entry in entries_list %}
         <tr><td>{{ entry.comment }}</td></tr>
     {% endfor %}
     </table>
