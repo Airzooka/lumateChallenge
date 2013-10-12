@@ -1,3 +1,6 @@
+{% extends 'container_guestbook.html' %}
+{% block content_guestbook %}
+
 {% if guestbook_error %}
     <div class="error">{{ guestbook_error }}</div>
 {% endif %}
@@ -36,3 +39,4 @@
         </tr>
      </table>
 </form>
+{% endblock %}
