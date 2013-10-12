@@ -66,20 +66,20 @@ WSGI_APPLICATION = 'lumatechallenge.wsgi.application'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'django.contrib.messages.middleware.MessageMiddleware',
     )
     
 # Misc
 SECRET_KEY = '%9%cm@2qms!4)&h6jwbah8$fcel2706jf6jbw01+*&23u^+pus'
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
+    #'django.contrib.auth',
+    #'django.contrib.contenttypes',
+    #'django.contrib.sessions',
+    #'django.contrib.sites',
+    #'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'django.contrib.admin',
     # 'django.contrib.admindocs',
