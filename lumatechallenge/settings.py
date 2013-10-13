@@ -1,4 +1,4 @@
-import os
+from os import path
 
 """Settings for the Lumate Challenge Django project.
 
@@ -7,30 +7,52 @@ Those beginning with LC are unique to this project.
 """
 
 # Debug
-DEBUG = True
+if path.exists('.debug'):
+    DEBUG = True
+else:
+    DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # Contact
 ADMINS = (
     ('Alexander Litty', 'me@alexlity.com'),
-)
+    )
 MANAGERS = ADMINS
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lumatechallenge',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'lumatechallenge',
+            'USER': 'runner',
+            'PASSWORD': 'asdf1234',
+            'HOST': 'localhost',
+            'PORT': '',
+            }
+        }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'lumatechallenge',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '',
+            }
+        }
 
-# Paths and hosts
-LC_ROOT = os.path.dirname(__file__)
-LC_URL = 'http://ec2-54-200-136-220.us-west-2.compute.amazonaws.com/'
+# Lumate Challenge paths and URLs
+LC_ROOT = path.dirname(__file__)
+if DEBUG:
+    LC_URL = 'http://localhost/lumateChallenge/'
+else:
+    LC_URL = 'http://ec2-54-200-136-220.us-west-2.compute.amazonaws.com/'
+    
+print LC_URL
+    
+# Other paths and URLs
 MEDIA_ROOT = LC_ROOT + 'media/'
 MEDIA_URL = LC_URL + 'media/'
 ROOT_URLCONF = 'lumatechallenge.urls'
@@ -47,7 +69,7 @@ USE_I18N = True
 STATIC_ROOT = LC_ROOT + 'static/'
 STATIC_URL = LC_URL + 'static/'
 STATICFILES_DIRS = (
-    '/home/lumatechallenge/static/'
+    LC_ROOT + 'static/'
     )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -60,7 +82,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
     )
 TEMPLATE_DIRS = (
-    '/home/lumatechallenge/templates/'
+    LC_ROOT + 'templates/'
     )
     
 # Apps and Middleware
