@@ -44,7 +44,7 @@ else:
         }
 
 # Lumate Challenge paths and URLs
-LC_ROOT = path.dirname(__file__)
+LC_ROOT = path.dirname(__file__) + '/'
 if DEBUG:
     LC_URL = 'http://localhost/lumateChallenge/'
 else:
