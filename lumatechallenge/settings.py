@@ -10,8 +10,11 @@ Settings beginning with LC are unique to the Lumate Challenge.
 """
 from os import path
 
+# Root path for this project
+LC_ROOT = path.dirname(__file__) + '/'
+
 # Debug
-if path.exists('.debug'):
+if path.exists(LC_ROOT + '.debug'):
     DEBUG = True
 else:
     DEBUG = False
@@ -48,7 +51,6 @@ else:
         }
 
 # Lumate Challenge paths and URLs
-LC_ROOT = path.dirname(__file__) + '/'
 if DEBUG:
     LC_URL = 'http://localhost/lumateChallenge/'
 else:
