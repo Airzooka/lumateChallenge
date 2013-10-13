@@ -1,3 +1,8 @@
+"""URL Configuration for the entire Lumate Challenge project.
+
+Serves the home page and two pages under /guestbook/.
+
+"""
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',

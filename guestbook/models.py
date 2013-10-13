@@ -1,10 +1,26 @@
+"""Models used to compose the website guestbook.
+
+This module contains a single implemented model class Entry, which represents
+a guestbook entry.
+
+"""
 from django.core import validators
 from django.db import models
 
+
 class Entry(models.Model):
-    """A digital signature in the guest book."""
+    """A representation of a digital signature in the guestbook.
+    
+    All data members are required, except comment.
+    
+    datetime is the time at which the entry was added.  ip is the IP address
+    of the client which added the entry.
+    
+    """
     datetime = models.DateTimeField(auto_now_add=True)
+    
     ip = models.IPAddressField()
+    
     namefirst = models.CharField(
         max_length=32,
         validators=[
@@ -19,6 +35,7 @@ class Entry(models.Model):
             'max_length': 'Last name must be 32 characters or less.'
             }
         )
+        
     namelast = models.CharField(
         max_length=32,
         validators=[
@@ -33,6 +50,7 @@ class Entry(models.Model):
             'max_length': 'Last name must be 32 characters or less.'
             }
         )
+        
     comment = models.CharField(
         blank=True,
         max_length=200,
@@ -42,4 +60,5 @@ class Entry(models.Model):
         )
     
     def __unicode__(self):
+        """Briefly returns the entry comment and author."""
         return self.comment + ' -' + nameFirst + ' ' + nameLast

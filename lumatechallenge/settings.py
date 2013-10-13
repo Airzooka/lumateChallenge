@@ -1,10 +1,14 @@
-from os import path
-
 """Settings for the Lumate Challenge Django project.
 
-Those beginning with LC are unique to this project.
+This script attempts to find a file called ".debug", which is placed on
+the testing server and not pulled or pushed with git.  The final server
+will not have this file.  As a result, we use it's presence to toggle
+debug mode and determine which settings to use.
+
+Settings beginning with LC are unique to the Lumate Challenge.
 
 """
+from os import path
 
 # Debug
 if path.exists('.debug'):
@@ -97,7 +101,5 @@ INSTALLED_APPS = (
 
 # Django Misc
 WSGI_APPLICATION = 'lumatechallenge.wsgi.application'
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
-
-# Misc    
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer' 
 SECRET_KEY = '%9%cm@2qms!4)&h6jwbah8$fcel2706jf6jbw01+*&23u^+pus'
