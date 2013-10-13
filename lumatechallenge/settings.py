@@ -56,8 +56,6 @@ if DEBUG:
 else:
     LC_URL = 'http://ec2-54-200-136-220.us-west-2.compute.amazonaws.com/'
     
-print LC_URL
-    
 # Other paths and URLs
 MEDIA_ROOT = LC_ROOT + 'media/'
 MEDIA_URL = LC_URL + 'media/'
