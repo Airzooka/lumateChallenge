@@ -1,14 +1,38 @@
 {% extends 'container_guestbook.html' %}
 {% block content_guestbook %}
 
+<a href="{% url 'guestbook:write' %}" style="background-color: #C99; 
+    color: #eee; margin: 15px 10px 0 10px; display: block; padding: 25px;
+    text-align: center; font-size: 24px; text-decoration: none;">
+    Sign the Guestbook</a>
+
 {% if entries_list %}
-    <table>
     {% for entry in entries_list %}
-        <tr><td>{{ entry.comment }}</td></tr>
+    <div style="margin-top: 25px;">
+        <div style="background-color: #eee; padding: 10px 20px;">
+            {% if entry.comment and entry.comment.strip %}
+                {{ entry.comment }}
+            {% else %}
+                <span style="font-style: italic;">No comment.</span>
+            {% endif %}
+        </div>
+        
+        <div style="padding: 10px; position: relative;
+            background-color: #ddd;">
+            ~ <strong>{{ entry.namefirst }} {{ entry.namelast }}</strong>
+            <span style="position: absolute; right: 10px; top: 10px;">
+                {{ entry.datetime|date:'N j, Y' }}
+                at {{ entry.datetime|date:'h:i A' }}
+                from {{ entry.ip }}
+            </span>
+        </div>
+    </div>
     {% endfor %}
-    </table>
 {% else %}
-    <div>Nobody has used the guest book!</div>
+    <div style="background-color: #eee; padding: 10px; text-align: center;
+        margin-top: 25px;">
+        Nobody has used the guestbook!
+    </div>
 {% endif %}
 
 {% endblock %}

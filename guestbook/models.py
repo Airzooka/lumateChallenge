@@ -7,33 +7,38 @@ class Entry(models.Model):
     ip = models.IPAddressField()
     namefirst = models.CharField(
         max_length=32,
-        #validators=[
-        #    validators.RegexValidator(
-        #        r'^[A-Za-z0-9 \'-]{1,32}$',
-        #        'First name is invalid.',
-        #        'Invalid First Name'
-        #        )
-        #    ]
+        validators=[
+            validators.RegexValidator(
+                regex=r'^[A-Za-z0-9 \'-]+$',
+                message='First name is invalid.',
+                code='Invalid First Name'
+                )
+            ],
+        error_messages = {
+            'blank': 'First name must be provided.',
+            'max_length': 'Last name must be 32 characters or less.'
+            }
         )
     namelast = models.CharField(
         max_length=32,
-        #validators=[
-        #    validators.RegexValidator(
-        #        r'^[A-Za-z0-9 \'-]{1,32}$',
-        #        'Last name is invalid.',
-        #        'Invalid Last Name'
-        #        )
-        #    ]
+        validators=[
+            validators.RegexValidator(
+                regex=r'^[A-Za-z0-9 \'-]+$',
+                message='Last name is invalid.',
+                code='Invalid Last Name'
+                )
+            ],
+        error_messages = {
+            'blank': 'Last name must be provided.',
+            'max_length': 'Last name must be 32 characters or less.'
+            }
         )
-    comment = models.TextField(
+    comment = models.CharField(
         blank=True,
-        #validators=[
-        #    validators.RegexValidator(
-        #        r'^[A-Za-z0-9 \'"!?.]{0,256}$'
-        #        'Comment is invalid. Keep it simple!',
-        #        'Invalid Comment'
-        #        )
-        #    ]
+        max_length=200,
+        error_messages = {
+            'max_length': 'Comment must be 200 characters or less.'
+            }
         )
     
     def __unicode__(self):

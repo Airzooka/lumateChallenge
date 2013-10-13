@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.template import loader
+from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
 from guestbook.models import Entry
 
 def index(request):
@@ -9,20 +11,21 @@ def index(request):
     return render(request, 'guestbook/index.html', context)
 
 def write(request):
+    guestbook_error = None
     if request.method == 'POST':
         try:
             new_entry = Entry(
                 ip=request.META['REMOTE_ADDR'],
-                nameFirst=request.POST['namefirst'],
-                nameLast=request.Post['namelast'],
+                namefirst=request.POST['namefirst'],
+                namelast=request.POST['namelast'],
                 comment=request.POST['comment']
                 )
             new_entry.full_clean()
             new_entry.save(force_insert=True)
         except ValidationError as e:
-            guestbook_error = '<br />'.join(e.messages)
+            guestbook_error = '<br /><br />'.join(e.messages)
         else:
-            return redirect('index.html')
+            return redirect(reverse('guestbook:index'))
     context = {
         'guestbook_error': guestbook_error
         }
